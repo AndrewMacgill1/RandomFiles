@@ -6,25 +6,25 @@ import java.util.regex.*;
 
 public class Solution {
     public static boolean ransomNote(String [] magazine, String[] ransom) {
-        boolean temp = false;
+        boolean works = false;
         if (ransom.length > magazine.length){
-            return temp;
+            return works;
         }
         else {
-            temp = true;
+            works = true;
             for (int i = 0; i < ransom.length; i++){
-                int match = 0;
+                boolean match = false;
                 for (int j = 0; j < magazine.length; j++){
                     if (ransom[i] == magazine[j]){
-                        match++;
+                        match = true;
                         magazine[j] = "";
                         break;
                     }
                 }
-                if (match == 0) temp = false;
-                else temp = true;
+                if (!match) works = false;
+                else works = true;
             }
-            return temp;
+            return works;
         }
     }
 
